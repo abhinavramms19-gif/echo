@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echoes of the Ordinary | Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #c9c1b5;
+            --accent-color: #7d6b47;
+            --grain: url('https://grainy-gradients.vercel.app/noise.svg');
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'EB Garamond', serif;
+            line-height: 1.6;
+        }
+
+        /* Film Grain Texture */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--grain);
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        header {
+            padding: 140px 20px 80px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-weight: 400;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            letter-spacing: 0.6rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .header-subtitle {
+            font-style: italic;
+            opacity: 0.5;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            column-count: 2;
+            column-gap: 50px;
+            padding: 0 10vw 100px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1100px) { .gallery { column-count: 1; padding: 0 40px 100px; } }
+
+        .item {
+            break-inside: avoid;
+            margin-bottom: 80px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .item.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .item img {
+            width: 100%;
+            display: block;
+            filter: grayscale(15%) contrast(95%) brightness(85%);
+            transition: all 1.5s cubic-bezier(0.2, 1, 0.3, 1);
+            cursor: zoom-in;
+        }
+
+        .item:hover img {
+            filter: grayscale(0%) contrast(100%) brightness(100%);
+            transform: scale(1.015);
+        }
+
+        .caption {
+            margin-top: 25px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .caption::before {
+            content: "";
+            width: 30px;
+            height: 1px;
+            background: var(--accent-color);
+            margin-right: 15px;
+            opacity: 0.4;
+        }
+
+        /* Footer Info */
+        footer {
+            text-align: center;
+            padding: 100px 20px;
+            border-top: 1px solid rgba(125, 107, 71, 0.1);
+            margin: 0 10vw;
+        }
+
+        .tech-specs {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            opacity: 0.4;
+        }
+
+        /* Lightbox */
+        #lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(4, 4, 4, 0.99);
+            z-index: 1000;
+            cursor: zoom-out;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Echoes of the Ordinary</h1>
+        <p class="header-subtitle">Observations of stillness in a moving world.</p>
+    </header>
+
+    <div class="gallery">
+        <div class="item">
+            <img src="IMG_1631.jpg" alt="Misty Mountains">
+            <div class="caption">Somewhere above the clouds</div>
+        </div>
+
+        <div class="item">
+            <img src="IMG_3070.jpg" alt="Port view through window">
+            <div class="caption">Heart of development of Cochin ports</div>
+        </div>
+
+        <div class="item">
+            <img src="IMG_3073.jpg" alt="Boat interior">
+            <div class="caption">Frame holding the sea</div>
+        </div>
+
+        <div class="item">
+            <img src="IMG_3837.jpg" alt="Boat on sea">
+            <div class="caption">The waves of solitude washing the shore</div>
+        </div>
+
+        <div class="item">
+            <img src="IMG_3075.jpg" alt="Port cranes">
+            <div class="caption">Hands of the ports, sky, backwaters and me</div>
+        </div>
+
+        <div class="item">
+            <img src="IMG_3612.jpg" alt="Forest road">
+            <div class="caption">Leaves bloom better than some flowers</div>
+        </div>
+
+        <div class="item">
+            <img src="IMG_3068-2.jpg" alt="Car and Museum">
+            <div class="caption">The intersection of history and the road ahead</div>
+        </div>
+
+        <div class="item">
+            <img src="IMG_4033.jpg" alt="Yamaha close up">
+            <div class="caption">If this is a machine then the heart is too</div>
+        </div>
+
+        <div class="item">
+            <img src="IMG_3069.jpg" alt="Large freighter">
+            <div class="caption">Resting giants in the humid air</div>
+        </div>
+
+        <div class="item">
+            <img src="IMG_4531.jpg" alt="Dramatic sunset">
+            <div class="caption">The sun, unsure whether to set in this world</div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="tech-specs">
+            Shot on iPhone 15 Plus &nbsp; // &nbsp; Edited on LRC 2021
+        </p>
+    </footer>
+
+    <div id="lightbox">
+        <img src="" id="lightbox-img">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        document.querySelectorAll('.item img').forEach(image => {
+            image.onclick = () => {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = image.src;
+                document.body.style.overflow = 'hidden';
+            }
+        });
+
+        lightbox.onclick = () => {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
+            });
+        }, { threshold: 0.05 });
+
+        document.querySelectorAll('.item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
